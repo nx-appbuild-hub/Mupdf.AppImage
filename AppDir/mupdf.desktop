@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MuPDF
+GenericName=PDF file viewer
+Exec=AppRun %f
+Icon=mupdf
+Terminal=false
+Type=Application
+MimeType=application/pdf;application/epub+zip;application/vnd.ms-xpsdocument;
+Categories=Viewer;Graphics;
+NoDisplay=true
