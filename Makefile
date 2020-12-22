@@ -12,8 +12,13 @@
 PWD:=$(shell pwd)
 
 all: clean
-	mkdir --parents $(PWD)/build/Boilerplate.AppDir
-	apprepo --destination=$(PWD)/build appdir boilerplate mupdf mupdf-tools
+	mkdir --parents $(PWD)/build/Boilerplate.AppDir/bin
+	mkdir --parents $(PWD)/build/Boilerplate.AppDir/lib64
+
+	wget --output-document=$(PWD)/build/build.deb http://archive.ubuntu.com/ubuntu/pool/main/j/jbig2dec/libjbig2dec0_0.18-1ubuntu1_amd64.deb
+	dpkg -x $(PWD)/build/build.deb $(PWD)/build/Boilerplate.AppDir/build
+
+	apprepo --destination=$(PWD)/build appdir boilerplate mupdf mupdf-tools libjbig2dec0
 
 	echo "exec \$${APPDIR}/lib64/mupdf/mupdf-x11 \"\$${@}\"" >> $(PWD)/build/Boilerplate.AppDir/AppRun
 
